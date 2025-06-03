@@ -168,6 +168,13 @@ class CompassFragment : Fragment() {
     }
 
     private fun registerSensorListener(sensorManager: SensorManager) {
+        sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD)
+            ?: run {
+                Log.w(TAG, "Compass sensor not available")
+                showErrorDialog(AppError.COMPASS_SENSOR_NOT_AVAILABLE)
+                return
+            }
+
         sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR)
             ?.also { rotationVectorSensor -> registerRotationVectorSensorListener(sensorManager, rotationVectorSensor) }
             ?: run {

@@ -23,20 +23,14 @@ plugins {
     id("kotlin-kapt")
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
 android {
     namespace = "com.bobek.compass"
-    compileSdk = 36
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.bobek.compass"
         minSdk = 23
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 29
         versionName = "1.14.9"
 
@@ -46,10 +40,28 @@ android {
         }
     }
 
+    signingConfigs {
+        getByName("debug") {
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             isShrinkResources = true
+            signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

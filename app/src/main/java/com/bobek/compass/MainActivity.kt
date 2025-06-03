@@ -111,13 +111,13 @@ class MainActivity : AppCompatActivity() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, ACCESS_COARSE_LOCATION)
             || ActivityCompat.shouldShowRequestPermissionRationale(this, ACCESS_FINE_LOCATION)
         ) {
-            showRequestNotificationsPermissionRationale()
+            showRequestLocationPermissionRationale()
         } else {
             launchAccessLocationPermissionRequest()
         }
     }
 
-    private fun showRequestNotificationsPermissionRationale() {
+    private fun showRequestLocationPermissionRationale() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.access_location_permission_rationale_title)
             .setMessage(R.string.access_location_permission_rationale_message)
