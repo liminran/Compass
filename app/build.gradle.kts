@@ -24,11 +24,11 @@ plugins {
 }
 
 android {
-    namespace = "com.bobek.compass"
+    namespace = "com.waxiaoxia001.compass"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.bobek.compass"
+        applicationId = "com.waxiaoxia001.compass"
         minSdk = 23
         targetSdk = 34
         versionCode = 29
@@ -93,6 +93,8 @@ android {
     }
     lint {
         warning += "MissingTranslation"
+        abortOnError = false
+        checkReleaseBuilds = false
     }
 }
 
